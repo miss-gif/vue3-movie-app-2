@@ -1,5 +1,5 @@
 .cache/
-
-dist/
-
+.idea/
+.DS_Store/
 node_modules/
+dist/
