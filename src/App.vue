@@ -1,4 +1,5 @@
 <template>
+  <h1>aaaa</h1>
   <RouterView />
 </template>
 
@@ -6,4 +7,6 @@
 export default {};
 </script>
 
-<style></style>
+<style lang="scss">
+@import "~/scss/main.scss";
+</style>
