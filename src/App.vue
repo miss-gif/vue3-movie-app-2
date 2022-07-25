@@ -1,10 +1,16 @@
 <template>
-  <h1>aaaa</h1>
+  <Header />
   <RouterView />
 </template>
 
 <script>
-export default {};
+import Header from '~/components/Header.vue'
+
+export default {
+  components: {
+    Header
+  }
+};
 </script>
 
 <style lang="scss">
