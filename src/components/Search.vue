@@ -11,13 +11,13 @@
         v-model="$data[filter.name]"
         :key="filter.name"
         class="form-select">
-        <option
+        <option 
           v-if="filter.name === 'year'"
           value="">
           All Years
         </option>
         <option
-          v-for="item in filters.items"
+          v-for="item in filter.items"
           :key="item">
           {{ item }}
         </option>
