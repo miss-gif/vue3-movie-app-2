@@ -27,8 +27,10 @@ h1 {
   line-height: 1;
   font-family: "Oswald", sans-serif;
   font-size: 80px;
+  text-transform: uppercase;
   span {
     color: $primary;
+    text-transform: none;
   }
 }
 p {
