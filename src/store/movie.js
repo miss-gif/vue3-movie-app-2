@@ -1,4 +1,5 @@
 import axios from "axios";
+import _uniqBy from "lodash/uniqBy";
 
 export default {
   // module로 사용
@@ -32,7 +33,7 @@ export default {
       );
       const { Search, totalResults } = res.data;
       commit("updateState", {
-        movies: Search,
+        movies: _uniqBy(Search, "imdbID"),
       });
       console.log(totalResults); // 309
       console.log(typeof totalResults); // string
@@ -51,7 +52,7 @@ export default {
           );
           const { Search } = res.data;
           commit("updateState", {
-            movies: [...state.movies, ...Search],
+            movies: [...state.movies, ..._uniqBy(Search, "imdbID")],
           });
         }
       }
