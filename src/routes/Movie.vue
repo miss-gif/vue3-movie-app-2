@@ -11,11 +11,16 @@
         <div class="skeleton etc"></div>
       </div>
     </div>
+    <Loader />
   </div>
 </template>
 
 <script>
+import Loader from '~/components/Loader'
 export default {
+  comments:{
+    Loader
+  },
   created() {
     console.log(this.$route);
     this.$store.dispatch("movie/searchMovieWithId", {
