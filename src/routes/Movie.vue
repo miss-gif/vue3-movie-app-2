@@ -17,6 +17,7 @@
 
 <script>
 import Loader from '~/components/Loader'
+
 export default {
   comments:{
     Loader

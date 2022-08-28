@@ -1,14 +1,14 @@
 <template>
   <div 
-  :style="{
-    width: `${size}rem`,
-    height: `${size}rem`,
-    zIndex  
+    :style="{
+      width: `${size}rem`,
+      height: `${size}rem`,
+      zIndex  
     }"
-  :class="{
-    absolute: absolute, fixed: fixed    
+    :class="{
+      absolute: absolute, fixed: fixed    
     }"
-  class="spinner-border text-primary"></div>
+    class="spinner-border text-primary"></div>
 </template>
 
 <script>
@@ -25,7 +25,7 @@ export default {
     fixed: {
       type: Boolean,
       default: false
-    }
+    },
     zIndex: {
       type: Number,
       default: 0
@@ -40,7 +40,6 @@ export default {
   top: 0;
   bottom: 0;
   left: 0;
-
   right: 0;
   &.absolute {
     position: absolute;
