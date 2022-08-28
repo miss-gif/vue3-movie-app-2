@@ -6,7 +6,8 @@
       zIndex  
     }"
     :class="{
-      absolute: absolute, fixed: fixed    
+      absolute,
+      fixed    
     }"
     class="spinner-border text-primary"></div>
 </template>
