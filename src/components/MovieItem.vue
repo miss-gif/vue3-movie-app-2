@@ -1,8 +1,8 @@
 <template>
-  <div 
-    :style="{backgroundImage: `url(${movie.Poster})`}"
+  <div
+    :style="{ backgroundImage: `url(${movie.Poster})` }"
     class="movie">
-    <Loader 
+    <Loader
       v-if="imageLoading"
       :size="1.5"
       absolute />
@@ -18,25 +18,25 @@
 </template>
 
 <script>
-import Loader from '~/components/Loader';
+import Loader from "~/components/Loader";
 
 export default {
   component: {
-    Loader
+    Loader,
   },
   props: {
     movie: {
       type: Object,
-      default: ()=> ({})
-    }
+      default: () => ({}),
+    },
   },
   data() {
     return {
-      imageLoading: true
-    }
+      imageLoading: true,
+    };
   },
   mounted() {
-    this.init()
+    this.init();
   },
   methods: {
     // init() {
@@ -46,20 +46,26 @@ export default {
     //     this.imageLoading = false
     //   })
     // }
+
     async init() {
-      await this.$loadImage(this.movie.Poster)
-      this.loadImage = false
-    }
+      const poster = this.movie.Poster;
+      if (!poster || poster === "N/A") {
+        this.imageLoading = false;
+      } else {
+        await this.$loadImage(this.movie.Poster);
+        this.loadImage = false;
+      }
+    },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
 @import "~/scss/main.scss";
-.movie{
-  $width:200px;
+.movie {
+  $width: 200px;
   width: $width;
-  height: $width*3/2;
+  height: $width * 3/2;
   margin: 10px;
   border-radius: 4px;
   background-color: $gray-400;
@@ -67,7 +73,7 @@ export default {
   overflow: hidden;
   position: relative;
   &:hover::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     bottom: 0;
@@ -75,8 +81,8 @@ export default {
     right: 0;
     border: 6px solid $primary;
   }
-  .info{
-    background-color: rgba($black, .3);
+  .info {
+    background-color: rgba($black, 0.3);
     width: 100%;
     padding: 14px;
     font-size: 14px;
