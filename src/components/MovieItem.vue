@@ -39,12 +39,16 @@ export default {
     this.init()
   },
   methods: {
-    init() {
-      const img = document.createElement('img')
-      img.src = this.movie.Poster
-      img.addEventListener('load', ()=> {
-        this.imageLoading = false
-      })
+    // init() {
+    //   const img = document.createElement('img')
+    //   img.src = this.movie.Poster
+    //   img.addEventListener('load', ()=> {
+    //     this.imageLoading = false
+    //   })
+    // }
+    async init() {
+      await this.$loadImage(this.movie.Poster)
+      this.loadImage = false
     }
   },
 }

@@ -21,8 +21,14 @@
       v-else
       class="movie-details">
       <div
-        :style="{ backgroundImage: `url(${requsetDiffsizeImage(theMovie.Poster)})` }"
-        class="poster"></div>
+        :style="{
+          backgroundImage: `url(${requsetDiffsizeImage(theMovie.Poster)})`,
+        }"
+        class="poster">
+        <Loader
+          v-if="imageLoading"
+          absolute />
+      </div>
       <div class="specs">
         <div class="title">
           {{ theMovie.Title }}
@@ -40,7 +46,7 @@
           <div class="rating-wrap">
             <div class="rating-wrap">
               <div
-                v-for="{Source:name, Value:score} in theMovie.Ratings"
+                v-for="{ Source: name, Value: score } in theMovie.Ratings"
                 :key="name"
                 :title="name"
                 class="rating">
@@ -71,14 +77,20 @@
       </div>
     </div>
   </div>
-</template>  
+</template>
 
 <script>
 import Loader from "~/components/Loader";
 
 export default {
+  components: { Loader },
   comments: {
     Loader,
+  },
+  data() {
+    return {
+      imageLoading: true,
+    };
   },
   computed: {
     theMovie() {
@@ -96,8 +108,12 @@ export default {
   },
   methods: {
     requsetDiffsizeImage(url, size = 700) {
-      return url.replace('SX300', `SX${size}`)
-    }
+      const src = url.replace("SX300", `SX${size}`);
+      this.$loadImage(src).then(() => {
+        this.imageLoading = false;
+      });
+      return src;
+    },
   },
 };
 </script>
@@ -155,6 +171,7 @@ export default {
     background-color: $gray-200;
     background-size: cover;
     background-position: center;
+    position: relative;
   }
   .specs {
     flex-grow: 1;
