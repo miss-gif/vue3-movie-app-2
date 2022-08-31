@@ -5,6 +5,6 @@ export default {
     email: "email",
     blog: "blog",
     phone: "phone",
-    image: "image",
+    image: "https://heropy.blog/css/images/logo.png",
   }),
 };
