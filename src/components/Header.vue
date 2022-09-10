@@ -15,7 +15,9 @@
         </RouterLink>
       </div>
     </div>
-    <div class="user">
+    <div
+      class="user"
+      @click="toAbout">
       <img
         :src="image"
         :alt="name" />
@@ -60,8 +62,13 @@ export default {
     isMatch(path) {
       if(!path) return false
       return path.test(this.$route.fullPath)
+    },
+    toAbout() {
+      console.log('!!!');
+      this.$router.push('/about')
     }
   },
+
 };
 </script>
 
@@ -90,12 +97,18 @@ header {
      bottom: 0;
      right: 40px;
      margin: auto;
+     transition: .4s;
      &:hover {
       background-color: darken($gray-200, 10%);
      }
      img{
       width: 100%;
      }
+  }
+  @include media-breakpoint-down (sm) {
+    .nav {
+      display: none;
+    }
   }
 }
 </style>
