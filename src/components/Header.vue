@@ -6,10 +6,10 @@
         v-for="nav in navigations"
         :key="nav.name"
         class="nav-item">
-        <RouterLink
+        <RouterLink 
           :to="nav.href"
           active-class="active"
-          :class="{ active: isMatch(nav.path) }"
+          :class="{active: isMatch(nav.path)}"
           class="nav-link">
           {{ nav.name }}
         </RouterLink>
@@ -26,11 +26,10 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import Logo from "~/components/Logo.vue";
+import Logo  from "~/components/Logo.vue";
 export default {
   components: {
-    Logo,
+    Logo
   },
   data() {
     return {
@@ -42,7 +41,7 @@ export default {
         {
           name: "Movie",
           href: "/Movie/tt4520988",
-          path: /^\/movie/,
+          path: /^\/movie/
         },
         {
           name: "About",
@@ -52,22 +51,29 @@ export default {
     };
   },
   computed: {
-    ...mapState("about", ["image", "name"]),
+    image() {
+      return this.$store.state.about.image
+    },
+    name() {
+      return this.$store.state.about.name
+    }
   },
   methods: {
     isMatch(path) {
-      if (!path) return false;
-      return path.test(this.$route.fullPath);
+      if(!path) return false
+      return path.test(this.$route.fullPath)
     },
     toAbout() {
-      console.log("!!!");
-      this.$router.push("/about");
-    },
+      console.log('!!!');
+      this.$router.push('/about')
+    }
   },
+
 };
 </script>
 
 <style lang="scss" scoped>
+
 header {
   height: 70px;
   padding: 0 40px;
@@ -78,27 +84,27 @@ header {
     margin-right: 40px;
   }
   .user {
-    width: 40px;
-    height: 40px;
-    padding: 6px;
-    border-radius: 50%;
-    box-sizing: border-box;
-    background-color: $gray-200;
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 40px;
-    margin: auto;
-    transition: 0.4s;
-    &:hover {
+     width: 40px;
+     height: 40px;
+     padding: 6px;
+     border-radius: 50%;
+     box-sizing: border-box;
+     background-color: $gray-200;
+     cursor: pointer;
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     right: 40px;
+     margin: auto;
+     transition: .4s;
+     &:hover {
       background-color: darken($gray-200, 10%);
-    }
-    img {
+     }
+     img{
       width: 100%;
-    }
+     }
   }
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down (sm) {
     .nav {
       display: none;
     }

@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <div class="photo">
-      <Loader
+      <Loader 
         v-if="imageLoading"
         absolute />
       <img
@@ -18,34 +18,48 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 import Loader from "~/components/Loader";
 
 export default {
   comments: {
-    Loader,
+    Loader
   },
   data() {
     return {
-      imageLoading: true,
-    };
+      imageLoading: true
+    }
   },
   computed: {
-    ...mapState("about", ["image", "name", "email", "blog", "phone"]),
+    image() {
+      return this.$store.state.about.image;
+    },
+    name() {
+      return this.$store.state.about.name;
+    },
+    email() {
+      return this.$store.state.about.email;
+    },
+    blog() {
+      return this.$store.state.about.blog;
+    },
+    phone() {
+      return this.$store.state.about.phone;
+    },
   },
   mounted() {
-    this.init();
+    this.init()
   },
   methods: {
-    async init() {
-      await this.$loadImage(this.image);
-      this.imageLoading = false;
-    },
+    async init(){
+      await this.$loadImage(this.image)
+      this.imageLoading = false
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
+
 .about {
   text-align: center;
   .photo {
@@ -68,4 +82,5 @@ export default {
     margin-bottom: 20px;
   }
 }
+
 </style>
