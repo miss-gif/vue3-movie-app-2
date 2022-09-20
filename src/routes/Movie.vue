@@ -80,6 +80,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import Loader from "~/components/Loader";
 
 export default {
@@ -93,12 +94,10 @@ export default {
     };
   },
   computed: {
-    theMovie() {
-      return this.$store.state.movie.theMovie;
-    },
-    loading() {
-      return this.$store.state.movie.loading;
-    },
+    ...mapState('movie', [
+      'theMovie',
+      'loading'
+    ]),
   },
   created() {
     console.log(this.$route);
